@@ -29,24 +29,38 @@ sealed partial class FormMain
     private void InitializeComponent()
     {
             this.btnManagement = new System.Windows.Forms.Button();
+            this.BtnOrder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnManagement
             // 
-            this.btnManagement.Location = new System.Drawing.Point(52, 53);
+            this.btnManagement.Location = new System.Drawing.Point(12, 489);
+            this.btnManagement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnManagement.Name = "btnManagement";
-            this.btnManagement.Size = new System.Drawing.Size(160, 29);
+            this.btnManagement.Size = new System.Drawing.Size(200, 200);
             this.btnManagement.TabIndex = 0;
             this.btnManagement.Text = "Management";
             this.btnManagement.UseVisualStyleBackColor = true;
             this.btnManagement.Click += new System.EventHandler(this.OnClickBtnManagement);
             // 
+            // BtnOrder
+            // 
+            this.BtnOrder.Location = new System.Drawing.Point(12, 12);
+            this.BtnOrder.Name = "BtnOrder";
+            this.BtnOrder.Size = new System.Drawing.Size(1260, 472);
+            this.BtnOrder.TabIndex = 1;
+            this.BtnOrder.Text = "ORDER";
+            this.BtnOrder.UseVisualStyleBackColor = true;
+            this.BtnOrder.Click += new System.EventHandler(this.OnClickBtnOrder);
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1348, 721);
+            this.ClientSize = new System.Drawing.Size(1284, 715);
+            this.Controls.Add(this.BtnOrder);
             this.Controls.Add(this.btnManagement);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormMain";
@@ -60,4 +74,5 @@ sealed partial class FormMain
     #endregion
 
     private Button btnManagement;
+    private Button BtnOrder;
 }

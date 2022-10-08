@@ -16,4 +16,10 @@ public partial class FormMain : FormBase
         Hide();
         FormFactory.Get<FormManagement>().ShowDialog();
     }
+
+    private void OnClickBtnOrder(object sender, EventArgs e)
+    {
+        Hide();
+        FormFactory.Get<FormOrder>().ShowDialog();
+    }
 }
