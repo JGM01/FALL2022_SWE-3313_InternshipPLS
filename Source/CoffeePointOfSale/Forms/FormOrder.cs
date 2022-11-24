@@ -2,16 +2,6 @@
 using CoffeePointOfSale.Forms.Base;
 using CoffeePointOfSale.Services.Customer;
 using CoffeePointOfSale.Services.FormFactory;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace CoffeePointOfSale.Forms
 {
@@ -23,17 +13,43 @@ namespace CoffeePointOfSale.Forms
         {
             _customerService = customerService;
             InitializeComponent();
+        
+      
+            
         }
 
         protected override void OnLoad(object sender, EventArgs e)
         {
             base.OnLoad(sender, e);
+
+            
+
         }
 
         private void onClickBtnBack(object sender, EventArgs e)
         {
             Close(); //closes this form
             FormFactory.Get<FormMain>().Show(); //re-opens the main form
+        }
+
+        private void FormOrder_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

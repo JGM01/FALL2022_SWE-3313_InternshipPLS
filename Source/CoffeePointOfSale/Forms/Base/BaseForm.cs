@@ -34,14 +34,16 @@ public class FormBase : Form
 
     private void InitializeComponent()
     {
-        SuspendLayout();
-        // 
-        // FormBase
-        // 
-        ClientSize = new Size(1348, 721);
-        Name = "FormBase";
-        StartPosition = FormStartPosition.CenterScreen;
-        ResumeLayout(false);
+            this.SuspendLayout();
+            // 
+            // FormBase
+            // 
+            this.ClientSize = new System.Drawing.Size(1348, 721);
+            this.Name = "FormBase";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.FormBase_Load);
+            this.ResumeLayout(false);
+
     }
 
     /// <summary>
@@ -53,5 +55,10 @@ public class FormBase : Form
         Text = string.IsNullOrWhiteSpace(title)
             ? AppSettings.App.Name
             : $"{title} | {AppSettings.App.Name}";
+    }
+
+    private void FormBase_Load(object sender, EventArgs e)
+    {
+
     }
 }

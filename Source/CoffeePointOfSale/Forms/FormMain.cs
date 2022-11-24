@@ -22,4 +22,15 @@ public partial class FormMain : FormBase
         Hide();
         FormFactory.Get<FormOrder>().ShowDialog();
     }
+
+    private void label1_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        Hide();
+        FormFactory.Get<FormCustomerList>().ShowDialog();
+    }
 }

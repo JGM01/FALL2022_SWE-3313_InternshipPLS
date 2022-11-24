@@ -21,22 +21,15 @@ public partial class FormManagement : FormNoCloseBase
         FormFactory.Get<FormMain>().Show(); //re-opens the main form
     }
 
-    protected override void OnLoad(object sender, EventArgs e)
+  
+    
+    private void button1_Click(object sender, EventArgs e)
     {
-        base.OnLoad(sender, e); //if we override OnLoad, we still need to call the base OnLoad method to setup the form in a standard fashion
-        DemonstrateGettingCustomerList();
+
     }
 
-    /// <summary>
-    /// Remove this from your project... here to show you how to get the customer list
-    /// </summary>
-    private void DemonstrateGettingCustomerList()
+    private void label1_Click(object sender, EventArgs e)
     {
-        var customerList = _customerService.Customers.List;
-        for (var customerIdx = 0; customerIdx < customerList.Count; customerIdx++)
-        {
-            var customer = customerList[customerIdx];
-            txtDeleteThis.AppendText($"{customerIdx + 1}. {customer}{Environment.NewLine}");
-        }
+
     }
 }
