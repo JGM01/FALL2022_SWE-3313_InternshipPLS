@@ -13,10 +13,11 @@ public partial class FormCustomerList : FormNoCloseBase
             {
             _customerService = customerService;
             InitializeComponent();
+      
         foreach (Customer elem in _customerService.Customers.List)
         {
-            textBox1.Text = elem.ToString();
-            
+           
+            customerBindingSource.Add(elem);
 
         }
     }
@@ -33,15 +34,17 @@ public partial class FormCustomerList : FormNoCloseBase
         FormFactory.Get<FormMain>().Show(); //re-opens the main form
     }
 
-    private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-    {
-       
-    }
+ 
 
     private void AddCustomerBtn_Click(object sender, EventArgs e)
     {
         Close(); //closes this form
         FormFactory.Get<FormAddCustomers>().Show();
+    }
+
+    private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+    {
+
     }
 }
 

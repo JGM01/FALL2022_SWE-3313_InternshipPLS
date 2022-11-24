@@ -30,19 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             this.ReturnBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AddCustomerBtn = new System.Windows.Forms.Button();
             this.Order = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.customersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rewards = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cNames = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardPointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ReturnBtn
@@ -58,25 +61,6 @@
             this.ReturnBtn.Text = "Return to main menu";
             this.ReturnBtn.UseVisualStyleBackColor = false;
             this.ReturnBtn.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewButtonColumn1,
-            this.Phone,
-            this.Rewards,
-            this.cNames,
-            this.listDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.customersBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(-3, 93);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(1334, 398);
-            this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // customersBindingSource
             // 
@@ -120,50 +104,63 @@
             this.textBox1.Size = new System.Drawing.Size(346, 53);
             this.textBox1.TabIndex = 5;
             // 
+            // customersBindingSource1
+            // 
+            this.customersBindingSource1.DataSource = typeof(CoffeePointOfSale.Services.Customer.Customers);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewButtonColumn1,
+            this.nameDataGridViewTextBoxColumn,
+            this.phoneDataGridViewTextBoxColumn,
+            this.rewardPointsDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.customerBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(302, 96);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(664, 188);
+            this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(CoffeePointOfSale.Services.Customer.Customer);
+            // 
             // dataGridViewButtonColumn1
             // 
-            this.dataGridViewButtonColumn1.DataPropertyName = "List";
             this.dataGridViewButtonColumn1.HeaderText = "Order";
             this.dataGridViewButtonColumn1.MinimumWidth = 6;
             this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            this.dataGridViewButtonColumn1.ReadOnly = true;
             this.dataGridViewButtonColumn1.Width = 125;
             // 
-            // Phone
+            // nameDataGridViewTextBoxColumn
             // 
-            this.Phone.DataPropertyName = "List";
-            this.Phone.HeaderText = "Phone";
-            this.Phone.MinimumWidth = 6;
-            this.Phone.Name = "Phone";
-            this.Phone.ReadOnly = true;
-            this.Phone.Width = 125;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.Width = 125;
             // 
-            // Rewards
+            // phoneDataGridViewTextBoxColumn
             // 
-            this.Rewards.DataPropertyName = "List";
-            this.Rewards.HeaderText = "Rewards";
-            this.Rewards.MinimumWidth = 6;
-            this.Rewards.Name = "Rewards";
-            this.Rewards.ReadOnly = true;
-            this.Rewards.Width = 125;
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.Width = 125;
             // 
-            // cNames
+            // rewardPointsDataGridViewTextBoxColumn
             // 
-            this.cNames.DataPropertyName = "List";
-            this.cNames.HeaderText = "cNames";
-            this.cNames.MinimumWidth = 6;
-            this.cNames.Name = "cNames";
-            this.cNames.ReadOnly = true;
-            this.cNames.Width = 125;
-            // 
-            // listDataGridViewTextBoxColumn
-            // 
-            this.listDataGridViewTextBoxColumn.DataPropertyName = "List";
-            this.listDataGridViewTextBoxColumn.HeaderText = "List";
-            this.listDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.listDataGridViewTextBoxColumn.Name = "listDataGridViewTextBoxColumn";
-            this.listDataGridViewTextBoxColumn.ReadOnly = true;
-            this.listDataGridViewTextBoxColumn.Width = 125;
+            this.rewardPointsDataGridViewTextBoxColumn.DataPropertyName = "RewardPoints";
+            this.rewardPointsDataGridViewTextBoxColumn.HeaderText = "RewardPoints";
+            this.rewardPointsDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.rewardPointsDataGridViewTextBoxColumn.Name = "rewardPointsDataGridViewTextBoxColumn";
+            this.rewardPointsDataGridViewTextBoxColumn.Width = 125;
             // 
             // FormCustomerList
             // 
@@ -173,18 +170,20 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(118)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(1330, 674);
             this.ControlBox = false;
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.AddCustomerBtn);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.ReturnBtn);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-           
+      
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCustomerList";
             this.Load += new System.EventHandler(this.FormCustomerList_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,16 +192,17 @@
         #endregion
 
         private Button ReturnBtn;
-        private DataGridView dataGridView1;
         private BindingSource customersBindingSource;
         private Button AddCustomerBtn;
         private DataGridViewButtonColumn Order;
         private DataGridViewTextBoxColumn Name;
         private TextBox textBox1;
+        private BindingSource customersBindingSource1;
+        private DataGridView dataGridView1;
+        private BindingSource customerBindingSource;
         private DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private DataGridViewTextBoxColumn Phone;
-        private DataGridViewTextBoxColumn Rewards;
-        private DataGridViewTextBoxColumn cNames;
-        private DataGridViewTextBoxColumn listDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn rewardPointsDataGridViewTextBoxColumn;
     }
 }

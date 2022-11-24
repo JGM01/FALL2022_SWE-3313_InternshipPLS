@@ -36,7 +36,10 @@ public class Customer
         get => _name;
         set
         {
-            if (IsAnonymous) return; //you cannot set reward points for the anonymous customer record
+            if (IsAnonymous)
+            {
+                _name = "Anonymous";
+            }//if the customer is Anonymous thier name will be set to Anonymous
             _name = value;
         }
     }

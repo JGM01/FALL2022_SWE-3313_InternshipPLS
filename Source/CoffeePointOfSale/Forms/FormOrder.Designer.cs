@@ -32,13 +32,10 @@
             this.BtnBack = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Order = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Names = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnBack
@@ -83,53 +80,20 @@
             this.label1.Text = "Customer Name";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Order,
-            this.Names,
-            this.Price});
-            this.dataGridView1.DataSource = this.customersBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 79);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(657, 389);
-            this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
             // customersBindingSource
             // 
             this.customersBindingSource.DataSource = typeof(CoffeePointOfSale.Services.Customer.Customers);
             // 
-            // Order
+            // dataGridView1
             // 
-            this.Order.DataPropertyName = "List";
-            this.Order.HeaderText = "Order";
-            this.Order.MinimumWidth = 6;
-            this.Order.Name = "Order";
-            this.Order.ReadOnly = true;
-            this.Order.Width = 125;
-            // 
-            // Names
-            // 
-            this.Names.DataPropertyName = "List";
-            this.Names.HeaderText = "Name";
-            this.Names.MinimumWidth = 6;
-            this.Names.Name = "Names";
-            this.Names.ReadOnly = true;
-            this.Names.Width = 125;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "List";
-            this.Price.HeaderText = "Price";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.Width = 125;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(477, 123);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(300, 188);
+            this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // FormOrder
             // 
@@ -145,8 +109,8 @@
             this.Name = "FormOrder";
             this.Text = "Order Window";
             this.Load += new System.EventHandler(this.FormOrder_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,12 +122,9 @@
         private Button button1;
         private Label label1;
         private ListBox listBox1;
-        private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn Phone;
         private DataGridViewTextBoxColumn Rewards;
         private BindingSource customersBindingSource;
-        private DataGridViewButtonColumn Order;
-        private DataGridViewTextBoxColumn Names;
-        private DataGridViewTextBoxColumn Price;
+        private DataGridView dataGridView1;
     }
 }
