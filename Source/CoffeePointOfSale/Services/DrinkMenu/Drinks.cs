@@ -5,8 +5,14 @@ using CoffeePointOfSale.Services.Drink;
 using Newtonsoft.Json;
 public class Customization
 {
+    [JsonProperty("Name")]
     public string Name { get; set; }
+    [JsonProperty("Price")]
     public double Price { get; set; }
+    public override string ToString()
+    {
+        return $"{Name}";
+    }
 }
 
 public class Drinks

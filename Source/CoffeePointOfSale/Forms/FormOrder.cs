@@ -8,7 +8,7 @@ namespace CoffeePointOfSale.Forms
 {
     public partial class FormOrder : FormNoCloseBase
     {
-
+        public static int chosenDrink;
         private readonly ICustomerService _customerService;
 
 
@@ -76,26 +76,11 @@ namespace CoffeePointOfSale.Forms
             }
         }
 
-
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dataGridView1_CellContentClick_3(object sender, DataGridViewCellEventArgs e)
         {
-
+            chosenDrink = e.RowIndex;
+            Close(); //closes this form
+            FormFactory.Get<FormCustomizations>().Show();
         }
     }
 }
