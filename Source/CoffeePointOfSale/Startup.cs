@@ -5,11 +5,12 @@ using CoffeePointOfSale.Forms;
 using CoffeePointOfSale.Forms.Base;
 using CoffeePointOfSale.Services.Customer;
 using CoffeePointOfSale.Services.FormFactory;
-using CoffeePointOfSale.Services.Menu;
+using CoffeePointOfSale.Services.DrinkMenu;
 using CoffeePointOfSale.Services.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using CoffeePointOfSale.Services.Drink;
 
 namespace CoffeePointOfSale;
 
@@ -35,7 +36,7 @@ internal static class Startup
     {
         services.AddSingleton<IStorageService, StorageService>();
         services.AddSingleton<ICustomerService, CustomerService>();
-        services.AddSingleton<MenuService>();
+        services.AddSingleton<DrinkMenuService>();
         RegisterForms(services);
         services.AddLogging(configure => configure.AddConsole());
     }

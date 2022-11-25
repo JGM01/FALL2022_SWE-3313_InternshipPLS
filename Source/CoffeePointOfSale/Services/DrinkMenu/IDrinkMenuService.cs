@@ -1,3 +1,7 @@
-﻿namespace CoffeePointOfSale.Services.Menu;
+﻿
 
-public interface IMenuService { }
+namespace CoffeePointOfSale.Services.Drink;
+
+public interface IDrinkMenuService {
+    
+}

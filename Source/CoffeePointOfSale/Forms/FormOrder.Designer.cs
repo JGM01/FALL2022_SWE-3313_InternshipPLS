@@ -33,9 +33,22 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.drinkMenuBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.drinkMenuBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.drinkMenuBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.drinkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.drinksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Order = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drinkMenuBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drinkMenuBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drinkMenuBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drinksBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnBack
@@ -86,14 +99,48 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(477, 123);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Order,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.dataGridView1.DataSource = this.drinksBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 89);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(300, 188);
+            this.dataGridView1.Size = new System.Drawing.Size(655, 400);
             this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_3);
+            // 
+            // drinksBindingSource
+            // 
+            this.drinksBindingSource.DataSource = typeof(CoffeePointOfSale.Services.DrinkMenu.Drinks);
+            // 
+            // Order
+            // 
+            this.Order.HeaderText = "Order";
+            this.Order.MinimumWidth = 6;
+            this.Order.Name = "Order";
+            this.Order.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn5.FillWeight = 200F;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "BasePrice";
+            this.dataGridViewTextBoxColumn6.HeaderText = "BasePrice";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 125;
             // 
             // FormOrder
             // 
@@ -110,7 +157,12 @@
             this.Text = "Order Window";
             this.Load += new System.EventHandler(this.FormOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drinkMenuBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drinkMenuBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drinkMenuBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drinksBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,6 +177,20 @@
         private DataGridViewTextBoxColumn Phone;
         private DataGridViewTextBoxColumn Rewards;
         private BindingSource customersBindingSource;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn basePriceDataGridViewTextBoxColumn;
+        private BindingSource drinkMenuBindingSource;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private BindingSource drinkMenuBindingSource1;
+        private BindingSource drinkMenuBindingSource2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private BindingSource drinkBindingSource;
         private DataGridView dataGridView1;
+        private BindingSource drinksBindingSource;
+        private DataGridViewButtonColumn Order;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }

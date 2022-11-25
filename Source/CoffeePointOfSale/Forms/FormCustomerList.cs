@@ -7,21 +7,25 @@ namespace CoffeePointOfSale.Forms;
 
 public partial class FormCustomerList : FormNoCloseBase
 {
+    public static string customerName;
     private readonly ICustomerService _customerService;
+   
     public FormCustomerList(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
         
             {
             _customerService = customerService;
             InitializeComponent();
-      
+        //not useful now but it shows how to add a customer to the customerlist 
+        _customerService.Customers.Add(new Customer() { Phone = "908-808-7890", Name = "jill hill", RewardPoints = 0 });
+        
         foreach (Customer elem in _customerService.Customers.List)
         {
            
             customerBindingSource.Add(elem);
 
         }
+        
     }
-
         private void FormCustomerList_Load(object sender, EventArgs e)
         {
        
@@ -44,8 +48,27 @@ public partial class FormCustomerList : FormNoCloseBase
 
     private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
     {
+        //loops through the customer list and once the index of the customer list mathches the row where a button was clicked that customers name is then stored
+        int i = 0;
+        foreach (Customer elem in _customerService.Customers.List)
+        {
+            if (i == e.RowIndex)
+            {
+                customerName = elem.Name;
+            }
+            i++;
+        }
+        
+        Close(); //closes this form
+        FormFactory.Get<FormOrder>().Show();
 
-    }
+       
+        
+            
+    
 }
+    }
+
+
 
 

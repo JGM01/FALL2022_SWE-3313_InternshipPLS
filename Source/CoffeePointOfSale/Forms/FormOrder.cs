@@ -2,20 +2,38 @@
 using CoffeePointOfSale.Forms.Base;
 using CoffeePointOfSale.Services.Customer;
 using CoffeePointOfSale.Services.FormFactory;
+using CoffeePointOfSale.Services.DrinkMenu;
 
 namespace CoffeePointOfSale.Forms
 {
     public partial class FormOrder : FormNoCloseBase
     {
+
         private readonly ICustomerService _customerService;
+
 
         public FormOrder(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
         {
             _customerService = customerService;
+            Drinks _drinkMenuService = new Drinks();
+
             InitializeComponent();
-        
-      
-            
+            if (!String.IsNullOrEmpty(FormCustomerList.customerName))
+            {
+                label1.Text = FormCustomerList.customerName;
+
+            }
+
+
+            foreach (Drinks elem in _drinkMenuService.initDrinks())
+            {
+
+                drinksBindingSource.Add(elem);
+
+            }
+
+
+
         }
 
         protected override void OnLoad(object sender, EventArgs e)
@@ -46,10 +64,36 @@ namespace CoffeePointOfSale.Forms
         {
 
         }
+        public string LabelText
+        {
+            get
+            {
+                return this.label1.Text;
+            }
+            set
+            {
+                this.label1.Text = value;
+            }
+        }
 
-      
+
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_3(object sender, DataGridViewCellEventArgs e)
         {
 
         }
