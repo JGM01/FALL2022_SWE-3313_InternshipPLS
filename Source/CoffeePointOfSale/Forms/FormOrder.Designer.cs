@@ -38,10 +38,17 @@
             this.drinkMenuBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.drinkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.drinksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Order = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.drinksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.labelSubtotal = new System.Windows.Forms.Label();
+            this.labelTax = new System.Windows.Forms.Label();
+            this.labelTotal = new System.Windows.Forms.Label();
+            this.labelSubtotalV = new System.Windows.Forms.Label();
+            this.labelTaxV = new System.Windows.Forms.Label();
+            this.labelTotalV = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drinkMenuBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drinkMenuBindingSource)).BeginInit();
@@ -88,9 +95,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(390, 58);
+            this.label1.Size = new System.Drawing.Size(290, 58);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Customer Name";
+            this.label1.Text = "Anonymous";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // customersBindingSource
@@ -100,23 +107,20 @@
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(63)))), ((int)(((byte)(75)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Order,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
             this.dataGridView1.DataSource = this.drinksBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 89);
+            this.dataGridView1.Location = new System.Drawing.Point(-6, 89);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(655, 400);
+            this.dataGridView1.Size = new System.Drawing.Size(673, 400);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_3);
-            // 
-            // drinksBindingSource
-            // 
-            this.drinksBindingSource.DataSource = typeof(CoffeePointOfSale.Services.DrinkMenu.Drinks);
             // 
             // Order
             // 
@@ -142,12 +146,94 @@
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.Width = 125;
             // 
+            // drinksBindingSource
+            // 
+            this.drinksBindingSource.DataSource = typeof(CoffeePointOfSale.Services.DrinkMenu.Drinks);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(63)))), ((int)(((byte)(75)))));
+            this.richTextBox1.ForeColor = System.Drawing.Color.White;
+            this.richTextBox1.Location = new System.Drawing.Point(663, 89);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(664, 255);
+            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // labelSubtotal
+            // 
+            this.labelSubtotal.AutoSize = true;
+            this.labelSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelSubtotal.Location = new System.Drawing.Point(719, 358);
+            this.labelSubtotal.Name = "labelSubtotal";
+            this.labelSubtotal.Size = new System.Drawing.Size(129, 33);
+            this.labelSubtotal.TabIndex = 5;
+            this.labelSubtotal.Text = "Subtotal:";
+            // 
+            // labelTax
+            // 
+            this.labelTax.AutoSize = true;
+            this.labelTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTax.Location = new System.Drawing.Point(719, 405);
+            this.labelTax.Name = "labelTax";
+            this.labelTax.Size = new System.Drawing.Size(72, 33);
+            this.labelTax.TabIndex = 6;
+            this.labelTax.Text = "Tax:";
+            // 
+            // labelTotal
+            // 
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTotal.Location = new System.Drawing.Point(719, 456);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(88, 33);
+            this.labelTotal.TabIndex = 7;
+            this.labelTotal.Text = "Total:";
+            // 
+            // labelSubtotalV
+            // 
+            this.labelSubtotalV.AutoSize = true;
+            this.labelSubtotalV.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelSubtotalV.Location = new System.Drawing.Point(1144, 358);
+            this.labelSubtotalV.Name = "labelSubtotalV";
+            this.labelSubtotalV.Size = new System.Drawing.Size(119, 33);
+            this.labelSubtotalV.TabIndex = 8;
+            this.labelSubtotalV.Text = "             ";
+            // 
+            // labelTaxV
+            // 
+            this.labelTaxV.AutoSize = true;
+            this.labelTaxV.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTaxV.Location = new System.Drawing.Point(1144, 405);
+            this.labelTaxV.Name = "labelTaxV";
+            this.labelTaxV.Size = new System.Drawing.Size(119, 33);
+            this.labelTaxV.TabIndex = 9;
+            this.labelTaxV.Text = "             ";
+            // 
+            // labelTotalV
+            // 
+            this.labelTotalV.AutoSize = true;
+            this.labelTotalV.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTotalV.Location = new System.Drawing.Point(1144, 456);
+            this.labelTotalV.Name = "labelTotalV";
+            this.labelTotalV.Size = new System.Drawing.Size(119, 33);
+            this.labelTotalV.TabIndex = 10;
+            this.labelTotalV.Text = "             ";
+            // 
             // FormOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(118)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(1330, 674);
+            this.Controls.Add(this.labelTotalV);
+            this.Controls.Add(this.labelTaxV);
+            this.Controls.Add(this.labelSubtotalV);
+            this.Controls.Add(this.labelTotal);
+            this.Controls.Add(this.labelTax);
+            this.Controls.Add(this.labelSubtotal);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -192,5 +278,12 @@
         private DataGridViewButtonColumn Order;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private RichTextBox richTextBox1;
+        private Label labelSubtotal;
+        private Label labelTax;
+        private Label labelTotal;
+        private Label labelSubtotalV;
+        private Label labelTaxV;
+        private Label labelTotalV;
     }
 }
