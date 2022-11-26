@@ -65,6 +65,7 @@ namespace CoffeePointOfSale.Forms
             richTextBox1.Clear();
             label1.Text = "Anonymous";
             FormCustomerList.customerName = "";
+            FormCustomizations.addToRecipt.Clear();
             Close(); //closes this form
             FormFactory.Get<FormMain>().Show(); //re-opens the main form
         }
