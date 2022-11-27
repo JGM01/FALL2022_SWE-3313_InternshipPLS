@@ -13,7 +13,10 @@ namespace CoffeePointOfSale.Forms
         private readonly ICustomerService _customerService;
         public static decimal subtotal = 0;
         public decimal tax = .06M;
-        
+        public static string finalReceipt;
+        public static string finalTax;
+        public static string finalSubtotal;
+        public static string finalTotal;
 
         public FormOrder(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
         {
@@ -37,14 +40,18 @@ namespace CoffeePointOfSale.Forms
             }
             foreach(String elem in FormCustomizations.addToRecipt)
             {
-                richTextBox1.Text += "\r\n"+elem;
-                
+               
+                finalReceipt += "\r\n" + elem;
+
+
+
             }
             if(FormCustomizations.subTotal != null)
             {
                 subtotal += FormCustomizations.subTotal;
             }
-            
+            richTextBox1.Text = finalReceipt;
+
             labelSubtotalV.Text = subtotal.ToString();
             labelTaxV.Text = (subtotal * tax).ToString();
             labelTotalV.Text = ((subtotal * tax) + subtotal).ToString();
@@ -61,13 +68,15 @@ namespace CoffeePointOfSale.Forms
 
         private void onClickBtnBack(object sender, EventArgs e)
         {
-            subtotal = 0;
-            richTextBox1.Clear();
-            label1.Text = "Anonymous";
+            FormCustomizations.addToRecipt.Clear();
+            FormOrder.subtotal = 0;
+            FormOrder.finalReceipt = "";
+            FormCustomizations.subTotal = 0;
             FormCustomerList.customerName = "";
             FormCustomizations.addToRecipt.Clear();
+            FormCustomerList.customerName = "Anonymous";
             Close(); //closes this form
-            FormFactory.Get<FormMain>().Show(); //re-opens the main form
+            FormFactory.Get<FormMain>().Show();
         }
 
         private void FormOrder_Load(object sender, EventArgs e)
@@ -77,7 +86,22 @@ namespace CoffeePointOfSale.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+         finalSubtotal = labelSubtotalV.Text;
+         finalTax = labelTaxV.Text;
+         finalTotal = labelTotalV.Text;
+            if (FormMain.isCustomer)
+            {
+                Close(); //closes this form
+                FormFactory.Get<FormPaymentA>().Show();
 
+            }
+            else
+            {
+                
+                Close(); //closes this form
+                FormFactory.Get<FormPaymentC>().Show();
+            }
+           
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -109,5 +133,6 @@ namespace CoffeePointOfSale.Forms
         {
 
         }
+     
     }
 }

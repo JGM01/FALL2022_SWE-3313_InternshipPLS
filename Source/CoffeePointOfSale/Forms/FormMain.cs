@@ -6,9 +6,11 @@ namespace CoffeePointOfSale.Forms;
 
 public partial class FormMain : FormBase
 {
+    public static Boolean isCustomer = false;
     public FormMain(IAppSettings appSettings) : base(appSettings)
     {
         InitializeComponent();
+        isCustomer = false;
     }
 
     private void OnClickBtnManagement(object sender, EventArgs e)
@@ -19,6 +21,7 @@ public partial class FormMain : FormBase
 
     private void OnClickBtnOrder(object sender, EventArgs e)
     {
+        isCustomer = true;
         Hide();
         FormFactory.Get<FormOrder>().ShowDialog();
     }

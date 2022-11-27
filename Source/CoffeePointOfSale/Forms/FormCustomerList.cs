@@ -34,8 +34,15 @@ public partial class FormCustomerList : FormNoCloseBase
 
     private void button1_Click(object sender, EventArgs e)
     {
+        FormCustomizations.addToRecipt.Clear();
+        FormOrder.subtotal = 0;
+        FormOrder.finalReceipt = "";
+        FormCustomizations.subTotal = 0;
+        FormCustomerList.customerName = "";
+        FormCustomizations.addToRecipt.Clear();
+        FormCustomerList.customerName = "Anonymous";
         Close(); //closes this form
-        FormFactory.Get<FormMain>().Show(); //re-opens the main form
+        FormFactory.Get<FormMain>().Show();
     }
 
  
