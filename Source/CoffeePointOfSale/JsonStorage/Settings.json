@@ -1,6 +1,5 @@
 {
   "Customers": {
-
     "anonymous": {
       "Phone": "anonymous",
       "RewardPoints": 0,
@@ -8,8 +7,8 @@
         {
           "Date": "2022-08-03",
           "Subtotal": 5,
-          "Tax": 0.30,
-          "Total": 5.30,
+          "Tax": 0.3,
+          "Total": 5.3,
           "Points Earned": 53,
           "Card": "5329",
           "Drinks": {
@@ -34,13 +33,13 @@
         }
       ]
     },
-    "123-456-7890": {
+    "customer 1": {
       "Name": "Richard Thomas",
       "Phone": "123-456-7890",
       "RewardPoints": 95,
       "Orders": []
     },
-    "098-765-4321": {
+    "customer 2": {
       "Name": "Mike Long",
       "Phone": "098-765-4321",
       "RewardPoints": 10000,
@@ -95,7 +94,7 @@
         }
       ]
     },
-    "800-867-5309": {
+    "customer 3": {
       "Name": "Phil tower",
       "Phone": "800-867-5309",
       "RewardPoints": 10000,
@@ -107,47 +106,12 @@
           "Total": 14.03,
           "Points Earned": 140,
           "Card": "1955",
-          "Drinks": [
-            {
-              "Name": "Iced Latte",
-              "BasePrice": 5.25,
-              "TotalPrice": 7.75,
-              "Customizations": [
-                {
-                  "Name": "Size A | Large",
-                  "Price": 1
-                },
-                {
-                  "Name": "Creamer D | Almond Milk",
-                  "Price": 1.5
-                },
-                {
-                  "Name": "Caffeine | Decaffeinated",
-                  "Price": 0
-                }
-              ]
-            },
-            {
-              "Name": "Iced Matcha Green Tea Latte",
-              "BasePrice": 4,
-              "TotalPrice": 5.5,
-              "Customizations": [
-                {
-                  "Name": "Creamer C | Oat Milk",
-                  "Price": 1.5
-                },
-                {
-                  "Name": "Ice B | Extra Ice",
-                  "Price": 0
-                }
-              ]
-            }
-          ]
+          "Drinks": ""
         },
         {
           "Date": "2022-08-24",
           "Subtotal": 6.75,
-          "Tax": 0.40,
+          "Tax": 0.4,
           "Total": 7.15,
           "Points Earned": 71,
           "Card": "6033",
@@ -182,7 +146,5 @@
         }
       ]
     }
-
   }
-  
 }

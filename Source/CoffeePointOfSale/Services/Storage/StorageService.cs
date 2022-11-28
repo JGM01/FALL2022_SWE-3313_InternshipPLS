@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using Newtonsoft.Json;
-
+using System;
 namespace CoffeePointOfSale.Services.Storage;
 
 public class StorageService : IStorageService
@@ -18,6 +18,7 @@ public class StorageService : IStorageService
                ?? throw new InvalidOperationException(
                    $"Could not deserialize JSON for {filename} to " +
                    $"type {typeof(T).FullName}");
+
     }
 
     public void Write<T>(T instanceToSerialize)

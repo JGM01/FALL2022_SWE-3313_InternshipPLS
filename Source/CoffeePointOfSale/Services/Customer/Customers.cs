@@ -1,14 +1,15 @@
 ﻿using Newtonsoft.Json;
-
+using System;
 namespace CoffeePointOfSale.Services.Customer;
 
 public class Customers
 {
+    public static String temp;
     /// <summary>
     /// Private dictionary containing all of the customers. Lookup via phone.
     /// </summary>
     [JsonProperty("Customers")]
-    private readonly Dictionary<string, Customer> _customerDict = new();
+    public static readonly Dictionary<string, Customer> _customerDict = new();
 
     /// <summary>
     /// Returns a readonly list of all customers.
@@ -18,7 +19,8 @@ public class Customers
         _customerDict.Select(c => c.Value)
             .OrderBy(c => c.IsAnonymous ? 0 : 1)
             .ToList();
-
+ 
+    
     /// <summary>
     /// Indexer to return a specific customer by phone.
     /// </summary>

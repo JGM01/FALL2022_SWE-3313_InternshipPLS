@@ -8,6 +8,7 @@ namespace CoffeePointOfSale.Forms;
 public partial class FormCustomerList : FormNoCloseBase
 {
     public static string customerName;
+    public static int customerIndex;
     private readonly ICustomerService _customerService;
    
     public FormCustomerList(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
@@ -20,7 +21,7 @@ public partial class FormCustomerList : FormNoCloseBase
         
         foreach (Customer elem in _customerService.Customers.List)
         {
-           
+        
             customerBindingSource.Add(elem);
 
         }
@@ -62,6 +63,7 @@ public partial class FormCustomerList : FormNoCloseBase
             if (i == e.RowIndex)
             {
                 customerName = elem.Name;
+                customerIndex = i;
             }
             i++;
         }

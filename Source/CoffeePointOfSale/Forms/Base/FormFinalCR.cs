@@ -47,6 +47,8 @@ namespace CoffeePointOfSale.Forms.Base
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
+
+
             FormOrder.subtotal = 0;
             FormOrder.finalReceipt = "";
             FormCustomizations.subTotal = 0;

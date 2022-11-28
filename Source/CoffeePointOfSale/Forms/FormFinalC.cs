@@ -4,14 +4,17 @@ using CoffeePointOfSale.Services.Customer;
 using CoffeePointOfSale.Services.FormFactory;
 using CoffeePointOfSale.Services.DrinkMenu;
 using System.Windows.Forms;
+
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CoffeePointOfSale.Forms
 {
+
     public partial class FormFinalC : FormNoCloseBase
     {
         private readonly ICustomerService _customerService;
         public string customerCard;
+        public Customer temp;
         public FormFinalC(IAppSettings appSettings, ICustomerService customerService): base(appSettings)
         {
             _customerService = customerService;
@@ -70,7 +73,10 @@ namespace CoffeePointOfSale.Forms
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
-        {
+        {//this can be used to write to the json come back when you have a drinks object and a customer name
+           
+        
+           
             FormCustomizations.addToRecipt.Clear();
             FormOrder.subtotal = 0;
             FormOrder.finalReceipt = "";
