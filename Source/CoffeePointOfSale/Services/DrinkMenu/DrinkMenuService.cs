@@ -10,7 +10,7 @@ public class DrinkMenuService : IDrinkMenuService
 
     public DrinkMenuService(IStorageService storageService)
     {
-        
+        _storageService = storageService;
     }
 
 }
