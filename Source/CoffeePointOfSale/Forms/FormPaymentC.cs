@@ -5,6 +5,7 @@ using CoffeePointOfSale.Services.FormFactory;
 using CoffeePointOfSale.Services.DrinkMenu;
 using System.Windows.Forms;
 using System.ComponentModel.DataAnnotations;
+using CoffeePointOfSale.Services.Customer;
 
 namespace CoffeePointOfSale.Forms
 {
@@ -13,12 +14,23 @@ namespace CoffeePointOfSale.Forms
         public static String card;
         public FormPaymentC()
         {
+           
             InitializeComponent();
             richTextBox1.Clear();
             richTextBox1.Text = FormOrder.finalReceipt;
             labelSubtotalV.Text = FormOrder.finalSubtotal;
             labelTaxV.Text = FormOrder.finalTax;
             labelTotalV.Text = FormOrder.finalTotal;
+            string totalOrderValue = labelTotalV.Text;
+            //disables rewards button if customer does not have enough rewards points
+            if (FormCustomerList.cCustomer.RewardPoints < Decimal.Parse(totalOrderValue))
+            {
+                button2.Enabled = false;
+            }
+            else
+            {
+                button2.Enabled = true;
+            }
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
@@ -85,6 +97,38 @@ namespace CoffeePointOfSale.Forms
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            if (!checkLuhn(textBox1.Text)){
+                cardBtn.Enabled = false;
+            }
+            else
+            {
+                cardBtn.Enabled = true;
+            }
+            static bool checkLuhn(String cardNo)
+            {
+                int nDigits = cardNo.Length;
+
+                int nSum = 0;
+                bool isSecond = false;
+                for (int i = nDigits - 1; i >= 0; i--)
+                {
+
+                    int d = cardNo[i] - '0';
+
+                    if (isSecond == true)
+                        d = d * 2;
+
+                    // We add two digits to handle
+                    // cases that make two digits
+                    // after doubling
+                    nSum += d / 10;
+                    nSum += d % 10;
+
+                    isSecond = !isSecond;
+                }
+                return (nSum % 10 == 0);
+            }
+
 
         }
     }

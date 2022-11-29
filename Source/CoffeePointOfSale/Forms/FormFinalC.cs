@@ -18,7 +18,8 @@ namespace CoffeePointOfSale.Forms
         private readonly ICustomerService _customerService;
         public string customerCard;
         public Customer temp;
-       
+        public string finalFour = "";
+
         public FormFinalC(IAppSettings appSettings, ICustomerService customerService): base(appSettings)
         {
             _customerService = customerService;
@@ -32,6 +33,7 @@ namespace CoffeePointOfSale.Forms
                 }
 
             }
+
             
             richTextBox1.Text = FormOrder.finalReceipt;
             labelSubtotalV.Text = FormOrder.finalSubtotal;
@@ -46,8 +48,15 @@ namespace CoffeePointOfSale.Forms
             {
                 labelCardV.Text = FormPaymentC.card;
             }
-         
-                }
+            String reversedCard  = (labelCardV.Text);
+            for(int i = 0; i < 4; i++)
+            {
+                finalFour = finalFour + reversedCard[i];
+                    
+            }
+            labelCardV.Text = finalFour;
+
+        }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -76,6 +85,8 @@ namespace CoffeePointOfSale.Forms
 
         private void BtnBack_Click(object sender, EventArgs e)
         {//this can be used to write to the json come back when you have a drinks object and a customer name
+           
+            
             var getNewCust = _customerService.Customers[FormCustomerList.cCustomer.Phone];
             getNewCust.Orders.Add(new Order()
             {
@@ -84,7 +95,7 @@ namespace CoffeePointOfSale.Forms
                 Tax = $"{FormOrder.finalTax}",
                 Total = $"{FormOrder.finalTotal}",
                 PointsEarned = FormOrder.pointsEarnd.ToString(),
-                Card = labelCardV.Text,
+                Card = Reverse(finalFour),
                 Drinks = JsonConvert.SerializeObject(FormOrder._drinksDict)
             });
             _customerService.Write();
@@ -123,6 +134,12 @@ namespace CoffeePointOfSale.Forms
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+        public static string Reverse(string s)
+        {
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
         }
     }
 }

@@ -44,6 +44,14 @@ namespace CoffeePointOfSale.Forms
                 drinksBindingSource.Add(elem);
 
             }
+            if(_drinksDict.Count == 0)
+            {
+                button1.Enabled = false;
+            }
+            else
+            {
+                button1.Enabled = true;
+            }
             foreach(String elem in FormCustomizations.addToRecipt)
             {
                

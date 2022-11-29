@@ -14,6 +14,7 @@ namespace CoffeePointOfSale.Forms;
     public static List<String> addToRecipt = new List<String>();
     public static decimal subTotal;
     public static Drinks _drinkMenuService = new Drinks();
+
     public FormCustomizations(IAppSettings appSettings) : base(appSettings)
     {
         InitializeComponent();

@@ -4,35 +4,7 @@
     "anonymous": {
       "Phone": "anonymous",
       "RewardPoints": 0,
-      "Orders": [
-        {
-          "Date": "2022-08-03",
-          "Subtotal": 5,
-          "Tax": 0.30,
-          "Total": 5.30,
-          "Points Earned": 53,
-          "Card": "5329",
-          "Drinks": {
-            "Name": "Latte",
-            "BasePrice": 4,
-            "TotalPrice": 5,
-            "Customizations": [
-              {
-                "Name": "Foam B | Lots of Foam",
-                "Price": 0
-              },
-              {
-                "Name": "Size B | Large",
-                "Price": 1
-              },
-              {
-                "Name": "Creamer B | Whole Milk",
-                "Price": 0
-              }
-            ]
-          }
-        }
-      ]
+      "Orders": []
     },
     "123-456-7890": {
       "Name": "Richard Thomas",
@@ -44,145 +16,16 @@
       "Name": "Mike Long",
       "Phone": "098-765-4321",
       "RewardPoints": 10000,
-      "Orders": [
-        {
-          "Date": "2022-08-09",
-          "Subtotal": 11,
-          "Tax": 0.66,
-          "Total": 11.66,
-          "Points Earned": 116,
-          "Card": "1057",
-          "Drinks": [
-            {
-              "Name": "Latte",
-              "BasePrice": 4,
-              "TotalPrice": 5,
-              "Customizations": [
-                {
-                  "Name": "Foam B | Lots of Foam",
-                  "Price": 0
-                },
-                {
-                  "Name": "Size B | Large",
-                  "Price": 1
-                },
-                {
-                  "Name": "Creamer B | Whole Milk",
-                  "Price": 0
-                }
-              ]
-            },
-            {
-              "Name": "Latte",
-              "BasePrice": 4,
-              "TotalPrice": 6,
-              "Customizations": [
-                {
-                  "Name": "Foam B | Lots of Foam",
-                  "Price": 0
-                },
-                {
-                  "Name": "Size C | Mega",
-                  "Price": 2
-                },
-                {
-                  "Name": "Caffeine | Decaffeinated",
-                  "Price": 0
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "Orders": []
     },
     "800-867-5309": {
       "Name": "Phil tower",
       "Phone": "800-867-5309",
       "RewardPoints": 10000,
-      "Orders": [
-        {
-          "Date": "2022-04-01",
-          "Subtotal": 13.25,
-          "Tax": 0.78,
-          "Total": 14.03,
-          "Points Earned": 140,
-          "Card": "1955",
-          "Drinks": [
-            {
-              "Name": "Iced Latte",
-              "BasePrice": 5.25,
-              "TotalPrice": 7.75,
-              "Customizations": [
-                {
-                  "Name": "Size A | Large",
-                  "Price": 1
-                },
-                {
-                  "Name": "Creamer D | Almond Milk",
-                  "Price": 1.5
-                },
-                {
-                  "Name": "Caffeine | Decaffeinated",
-                  "Price": 0
-                }
-              ]
-            },
-            {
-              "Name": "Iced Matcha Green Tea Latte",
-              "BasePrice": 4,
-              "TotalPrice": 5.5,
-              "Customizations": [
-                {
-                  "Name": "Creamer C | Oat Milk",
-                  "Price": 1.5
-                },
-                {
-                  "Name": "Ice B | Extra Ice",
-                  "Price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "Date": "2022-08-24",
-          "Subtotal": 6.75,
-          "Tax": 0.40,
-          "Total": 7.15,
-          "Points Earned": 71,
-          "Card": "6033",
-          "Drinks": [
-            {
-              "Name": "Espresso",
-              "BasePrice": 2.5,
-              "TotalPrice": 3.75,
-              "Customizations": [
-                {
-                  "Name": "Espresso | 1 Extra Shot",
-                  "Price": 1.25
-                }
-              ]
-            },
-            {
-              "Name": "Latte",
-              "BasePrice": 4,
-              "TotalPrice": 3,
-              "Customizations": [
-                {
-                  "Name": "Size A | Small",
-                  "Price": -1
-                },
-                {
-                  "Name": "Temperature A | Less Hot",
-                  "Price": 0
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "Orders": []
+
     }
 
   }
-  
+
 }
