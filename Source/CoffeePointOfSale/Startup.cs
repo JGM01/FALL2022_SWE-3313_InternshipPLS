@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using CoffeePointOfSale.Services.Drink;
+using CoffeePointOfSale.Services.CsvExtract;
 
 namespace CoffeePointOfSale;
 
@@ -37,6 +38,7 @@ internal static class Startup
         services.AddSingleton<IStorageService, StorageService>();
         services.AddSingleton<ICustomerService, CustomerService>();
         services.AddSingleton<DrinkMenuService>();
+        services.AddSingleton<ICsvExtract, CsvExtract>();
         RegisterForms(services);
         services.AddLogging(configure => configure.AddConsole());
     }
