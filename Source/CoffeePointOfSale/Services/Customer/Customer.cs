@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using CoffeePointOfSale.Services.DrinkMenu;
 
 namespace CoffeePointOfSale.Services.Customer;
 
@@ -56,4 +57,17 @@ public class Customer
             ? "Anonymous Customer - No Reward Points"
             : $"{Phone},{Name}, Reward Points: {RewardPoints}";
     }
+    public List<Order> Orders { get; set; } = new();
+
+}
+public class Order
+{
+    public string Date { get; set; }
+    public string Subtotal { get; set; }
+    public string Tax { get; set; }
+    public string Total { get; set; }
+    public string PointsEarned { get; set; }
+    public string Card { get; set; }
+    public string Drinks { get; set; }
+
 }

@@ -33,13 +33,13 @@
         }
       ]
     },
-    "customer 1": {
+    "123-456-7890": {
       "Name": "Richard Thomas",
       "Phone": "123-456-7890",
       "RewardPoints": 95,
       "Orders": []
     },
-    "customer 2": {
+    "098-765-4321": {
       "Name": "Mike Long",
       "Phone": "098-765-4321",
       "RewardPoints": 10000,
@@ -94,57 +94,11 @@
         }
       ]
     },
-    "customer 3": {
+    "800-867-5309": {
       "Name": "Phil tower",
       "Phone": "800-867-5309",
       "RewardPoints": 10000,
-      "Orders": [
-        {
-          "Date": "2022-04-01",
-          "Subtotal": 13.25,
-          "Tax": 0.78,
-          "Total": 14.03,
-          "Points Earned": 140,
-          "Card": "1955",
-          "Drinks": ""
-        },
-        {
-          "Date": "2022-08-24",
-          "Subtotal": 6.75,
-          "Tax": 0.4,
-          "Total": 7.15,
-          "Points Earned": 71,
-          "Card": "6033",
-          "Drinks": [
-            {
-              "Name": "Espresso",
-              "BasePrice": 2.5,
-              "TotalPrice": 3.75,
-              "Customizations": [
-                {
-                  "Name": "Espresso | 1 Extra Shot",
-                  "Price": 1.25
-                }
-              ]
-            },
-            {
-              "Name": "Latte",
-              "BasePrice": 4,
-              "TotalPrice": 3,
-              "Customizations": [
-                {
-                  "Name": "Size A | Small",
-                  "Price": -1
-                },
-                {
-                  "Name": "Temperature A | Less Hot",
-                  "Price": 0
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "Orders": ""
     }
   }
 }

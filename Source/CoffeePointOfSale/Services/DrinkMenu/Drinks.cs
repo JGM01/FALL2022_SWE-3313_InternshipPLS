@@ -3,6 +3,7 @@ namespace CoffeePointOfSale.Services.DrinkMenu;
 using System.Text.Json.Serialization;
 using CoffeePointOfSale.Services.Drink;
 using Newtonsoft.Json;
+
 public class Customization
 {
     [JsonProperty("Name")]
@@ -19,18 +20,23 @@ public class Drinks
 {
     [JsonProperty("Name")]
     public string Name { get; set; }
-    public string BaseDescription { get; set; }
-    public string Image { get; set; }
+    
+ 
     [JsonProperty("BasePrice")]
     public double BasePrice { get; set; }
-    public List<Customization> Customizations { get; set; }
+    public List<Customization> Customizations = new();
     public Drinks[] initDrinks()
         
     {
-
-        //Dont Forget to change the string to a file path later
         string json = File.ReadAllText("C:\\Users\\Richardo\\FALL2022_SWE-3313_InternshipPLS\\Source\\CoffeePointOfSale\\JsonStorage\\DrinkMenu.json");
         return JsonConvert.DeserializeObject<Drinks[]>(json);
+    }
+    public List<Drinks> customerDrinks(string phone)
+    {
+        string json = File.ReadAllText("C:\\Users\\Richardo\\FALL2022_SWE-3313_InternshipPLS\\Source\\CoffeePointOfSale\\JsonStorage\\Customers.json");
+        dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
+        List<Drinks> temp = JsonConvert.DeserializeObject<Drinks>(jsonObj["Customers"][phone]["Orders"]);
+        return temp;
     }
     public override string ToString()
     {

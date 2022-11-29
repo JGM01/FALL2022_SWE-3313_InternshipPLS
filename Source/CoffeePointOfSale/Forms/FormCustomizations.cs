@@ -13,11 +13,13 @@ namespace CoffeePointOfSale.Forms;
     public List<Customization> addToOrder = new List<Customization>();
     public static List<String> addToRecipt = new List<String>();
     public static decimal subTotal;
+    public static Drinks _drinkMenuService = new Drinks();
     public FormCustomizations(IAppSettings appSettings) : base(appSettings)
     {
         InitializeComponent();
-        Drinks _drinkMenuService = new Drinks();
+        
         label1.Text = _drinkMenuService.initDrinks()[FormOrder.chosenDrink].Name;
+
         subTotal += decimal.Parse(_drinkMenuService.initDrinks()[FormOrder.chosenDrink].ToString());
         addToRecipt.Add(label1.Text.ToUpper());
         foreach (Customization elem in _drinkMenuService.initDrinks()[FormOrder.chosenDrink].Customizations)
@@ -52,10 +54,17 @@ namespace CoffeePointOfSale.Forms;
 
     private void orderBtn_Click(object sender, EventArgs e)
     {
+        //adds drinks to drinks list _ndrinks list
+     
         Drinks drink = new Drinks();
+        int i = 0;
      foreach (String s in checkedListBox1.CheckedItems)
         {
             addToRecipt.Add(s);
+            Customization temp = new Customization();
+            temp.Name = _drinkMenuService.initDrinks()[FormOrder.chosenDrink].Customizations[i].Name;
+            temp.Price = _drinkMenuService.initDrinks()[FormOrder.chosenDrink].Customizations[i].Price;
+            addToOrder.Add(temp);
             foreach (Customization elem in drink.initDrinks()[FormOrder.chosenDrink].Customizations)
             {
                if( s.Split(',')[0] == elem.Name)
@@ -65,7 +74,15 @@ namespace CoffeePointOfSale.Forms;
             }
             
         }
-       Close(); //closes this form
+        Drinks nDrink = new Drinks();
+        nDrink.Name = _drinkMenuService.initDrinks()[FormOrder.chosenDrink].Name;
+        nDrink.BasePrice = _drinkMenuService.initDrinks()[FormOrder.chosenDrink].BasePrice;
+        foreach (Customization elem in addToOrder)
+        {
+            nDrink.Customizations.Add(elem);
+        }
+        FormOrder._drinksDict.Add(nDrink);
+        Close(); //closes this form
         FormFactory.Get<FormOrder>().Show(); //re-opens the main form
     }
 

@@ -4,6 +4,9 @@ using CoffeePointOfSale.Services.Customer;
 using CoffeePointOfSale.Services.FormFactory;
 using CoffeePointOfSale.Services.DrinkMenu;
 using System.Windows.Forms;
+using System.Text.Json;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace CoffeePointOfSale.Forms
 {
@@ -17,6 +20,9 @@ namespace CoffeePointOfSale.Forms
         public static string finalTax;
         public static string finalSubtotal;
         public static string finalTotal;
+        public static int pointsEarnd;
+        public static readonly List<Drinks> _drinksDict = new();
+
 
         public FormOrder(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
         {
@@ -55,6 +61,7 @@ namespace CoffeePointOfSale.Forms
             labelSubtotalV.Text = subtotal.ToString();
             labelTaxV.Text = (subtotal * tax).ToString();
             labelTotalV.Text = ((subtotal * tax) + subtotal).ToString();
+            pointsEarnd =(int) Math.Floor((((subtotal * tax) + subtotal)/10));
             FormCustomizations.subTotal = 0;
         }
 
@@ -86,9 +93,13 @@ namespace CoffeePointOfSale.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-         finalSubtotal = labelSubtotalV.Text;
-         finalTax = labelTaxV.Text;
-         finalTotal = labelTotalV.Text;
+            finalSubtotal = labelSubtotalV.Text;
+            finalTax = labelTaxV.Text;
+            finalTotal = labelTotalV.Text;
+         
+
+            //i want to pass in _drinks
+        
             if (FormMain.isCustomer)
             {
                 Close(); //closes this form

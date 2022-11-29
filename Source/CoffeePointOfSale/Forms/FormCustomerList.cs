@@ -9,6 +9,7 @@ public partial class FormCustomerList : FormNoCloseBase
 {
     public static string customerName;
     public static int customerIndex;
+    public static Customer cCustomer;
     private readonly ICustomerService _customerService;
    
     public FormCustomerList(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
@@ -64,6 +65,7 @@ public partial class FormCustomerList : FormNoCloseBase
             {
                 customerName = elem.Name;
                 customerIndex = i;
+                cCustomer = elem;
             }
             i++;
         }

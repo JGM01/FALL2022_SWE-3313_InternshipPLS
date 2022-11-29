@@ -6,6 +6,9 @@ using CoffeePointOfSale.Services.DrinkMenu;
 using System.Windows.Forms;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace CoffeePointOfSale.Forms
 {
@@ -15,22 +18,21 @@ namespace CoffeePointOfSale.Forms
         private readonly ICustomerService _customerService;
         public string customerCard;
         public Customer temp;
+       
         public FormFinalC(IAppSettings appSettings, ICustomerService customerService): base(appSettings)
         {
             _customerService = customerService;
             InitializeComponent();
-            /*
-           - for adding a customer order at the end
-           - use label in order instead
+     
             foreach(Customer elem in _customerService.Customers.List)
             {
                 if(elem.Name == FormCustomerList.customerName)
                 {
-                    customerCard = elem.
+                    temp = elem;
                 }
 
             }
-            */
+            
             richTextBox1.Text = FormOrder.finalReceipt;
             labelSubtotalV.Text = FormOrder.finalSubtotal;
             labelTaxV.Text = FormOrder.finalTax;
@@ -74,9 +76,19 @@ namespace CoffeePointOfSale.Forms
 
         private void BtnBack_Click(object sender, EventArgs e)
         {//this can be used to write to the json come back when you have a drinks object and a customer name
-           
-        
-           
+            var getNewCust = _customerService.Customers[FormCustomerList.cCustomer.Phone];
+            getNewCust.Orders.Add(new Order()
+            {
+                Date = $"{DateTime.Now.ToString()}",
+                Subtotal = $"{FormOrder.finalSubtotal}",
+                Tax = $"{FormOrder.finalTax}",
+                Total = $"{FormOrder.finalTotal}",
+                PointsEarned = FormOrder.pointsEarnd.ToString(),
+                Card = labelCardV.Text,
+                Drinks = JsonConvert.SerializeObject(FormOrder._drinksDict)
+            });
+            _customerService.Write();
+
             FormCustomizations.addToRecipt.Clear();
             FormOrder.subtotal = 0;
             FormOrder.finalReceipt = "";

@@ -48,6 +48,17 @@ namespace CoffeePointOfSale.Forms.Base
         private void BtnBack_Click(object sender, EventArgs e)
         {
 
+            var getNewCust = _customerService.Customers[FormCustomerList.cCustomer.Phone];
+            getNewCust.Orders.Add(new Order()
+            {
+                Date = $"{DateTime.Now.ToString()}",
+                Subtotal = $"{FormOrder.finalSubtotal}",
+                Tax = $"{FormOrder.finalTax}",
+                Total = $"{FormOrder.finalTotal}",
+                PointsEarned = FormOrder.pointsEarnd.ToString(),
+                Drinks = Newtonsoft.Json.JsonConvert.SerializeObject(FormOrder._drinksDict)
+            });
+            _customerService.Write();
 
             FormOrder.subtotal = 0;
             FormOrder.finalReceipt = "";
