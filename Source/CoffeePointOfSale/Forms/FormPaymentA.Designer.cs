@@ -148,6 +148,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(535, 27);
             this.textBox1.TabIndex = 18;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // FormPaymentA
             // 
@@ -167,6 +168,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "FormPaymentA";
             this.Text = "FormPaymentA";
+            this.Load += new System.EventHandler(this.FormPaymentA_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
