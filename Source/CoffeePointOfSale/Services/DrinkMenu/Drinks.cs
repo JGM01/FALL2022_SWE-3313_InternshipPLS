@@ -18,6 +18,8 @@ public class Customization
 
 public class Drinks
 {
+    private readonly IDrinkMenuService _drinkMenuService;
+
     [JsonProperty("Name")]
     public string Name { get; set; }
     
