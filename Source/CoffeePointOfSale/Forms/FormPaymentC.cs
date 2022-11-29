@@ -22,6 +22,7 @@ namespace CoffeePointOfSale.Forms
             labelTaxV.Text = FormOrder.finalTax;
             labelTotalV.Text = FormOrder.finalTotal;
             string totalOrderValue = labelTotalV.Text;
+            cardBtn.Enabled = false;
             //disables rewards button if customer does not have enough rewards points
             if (FormCustomerList.cCustomer.RewardPoints < Decimal.Parse(totalOrderValue))
             {

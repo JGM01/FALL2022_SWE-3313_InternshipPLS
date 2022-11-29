@@ -72,9 +72,9 @@ namespace CoffeePointOfSale.Forms
             }
             richTextBox1.Text = finalReceipt;
 
-            labelSubtotalV.Text = subtotal.ToString();
-            labelTaxV.Text = (subtotal * tax).ToString();
-            labelTotalV.Text = ((subtotal * tax) + subtotal).ToString();
+            labelSubtotalV.Text = subtotal.ToString("0.00");
+            labelTaxV.Text = (subtotal * tax).ToString("0.00");
+            labelTotalV.Text = ((subtotal * tax) + subtotal).ToString("0.00");
             pointsEarnd =(int) Math.Floor((((subtotal * tax) + subtotal)/10));
             FormCustomizations.subTotal = 0;
         }

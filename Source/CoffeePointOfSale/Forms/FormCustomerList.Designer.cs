@@ -37,11 +37,12 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.customersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rewardPointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.SearchBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -98,11 +99,12 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(71, 21);
+            this.textBox1.Location = new System.Drawing.Point(21, 21);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "Search";
             this.textBox1.Size = new System.Drawing.Size(346, 53);
             this.textBox1.TabIndex = 5;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // customersBindingSource1
             // 
@@ -126,10 +128,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(664, 188);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(CoffeePointOfSale.Services.Customer.Customer);
             // 
             // dataGridViewButtonColumn1
             // 
@@ -162,6 +160,20 @@
             this.rewardPointsDataGridViewTextBoxColumn.Name = "rewardPointsDataGridViewTextBoxColumn";
             this.rewardPointsDataGridViewTextBoxColumn.Width = 125;
             // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(CoffeePointOfSale.Services.Customer.Customer);
+            // 
+            // SearchBtn
+            // 
+            this.SearchBtn.Location = new System.Drawing.Point(357, 21);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(94, 53);
+            this.SearchBtn.TabIndex = 7;
+            this.SearchBtn.Text = "Search";
+            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
+            // 
             // FormCustomerList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -170,13 +182,14 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(118)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(1330, 674);
             this.ControlBox = false;
+            this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.AddCustomerBtn);
             this.Controls.Add(this.ReturnBtn);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-      
+          
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCustomerList";
             this.Load += new System.EventHandler(this.FormCustomerList_Load);
@@ -204,5 +217,6 @@
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn rewardPointsDataGridViewTextBoxColumn;
+        private Button SearchBtn;
     }
 }

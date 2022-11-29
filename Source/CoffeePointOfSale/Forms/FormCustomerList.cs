@@ -79,7 +79,24 @@ public partial class FormCustomerList : FormNoCloseBase
             
     
 }
+
+    private void textBox1_TextChanged(object sender, EventArgs e)
+    {
+        
     }
+
+    private void SearchBtn_Click(object sender, EventArgs e)
+    {
+        Customer getCust = _customerService.Customers[textBox1.Text];
+        if (getCust != null)
+        {
+            getCust = _customerService.Customers[textBox1.Text];
+            cCustomer = getCust;
+        }
+        Close(); //closes this form
+        FormFactory.Get<FormOrder>().Show();
+    }
+}
 
 
 

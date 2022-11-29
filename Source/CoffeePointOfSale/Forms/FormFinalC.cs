@@ -9,6 +9,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Newtonsoft.Json.Linq;
 using System.Text.Json;
 using Newtonsoft.Json;
+using System;
 
 namespace CoffeePointOfSale.Forms
 {
@@ -48,12 +49,9 @@ namespace CoffeePointOfSale.Forms
             {
                 labelCardV.Text = FormPaymentC.card;
             }
-            String reversedCard  = (labelCardV.Text);
-            for(int i = 0; i < 4; i++)
-            {
-                finalFour = finalFour + reversedCard[i];
-                    
-            }
+            
+            finalFour = labelCardV.Text;
+            finalFour = finalFour.GetLast(4);
             labelCardV.Text = finalFour;
 
         }
@@ -85,9 +83,9 @@ namespace CoffeePointOfSale.Forms
 
         private void BtnBack_Click(object sender, EventArgs e)
         {//this can be used to write to the json come back when you have a drinks object and a customer name
-           
-            
-            var getNewCust = _customerService.Customers[FormCustomerList.cCustomer.Phone];
+
+            if (!FormMain.isCustomer) { 
+                var getNewCust = _customerService.Customers[FormCustomerList.cCustomer.Phone];
             getNewCust.Orders.Add(new Order()
             {
                 Date = $"{DateTime.Now.ToString()}",
@@ -95,11 +93,26 @@ namespace CoffeePointOfSale.Forms
                 Tax = $"{FormOrder.finalTax}",
                 Total = $"{FormOrder.finalTotal}",
                 PointsEarned = FormOrder.pointsEarnd.ToString(),
-                Card = Reverse(finalFour),
+                Card = finalFour,
                 Drinks = JsonConvert.SerializeObject(FormOrder._drinksDict)
             });
             _customerService.Write();
-
+        }
+            else
+            {
+                var getNewCust = _customerService.Customers.List[0];
+                getNewCust.Orders.Add(new Order()
+                {
+                    Date = $"{DateTime.Now.ToString()}",
+                    Subtotal = $"{FormOrder.finalSubtotal}",
+                    Tax = $"{FormOrder.finalTax}",
+                    Total = $"{FormOrder.finalTotal}",
+                    PointsEarned = FormOrder.pointsEarnd.ToString(),
+                    Card = finalFour,
+                    Drinks = JsonConvert.SerializeObject(FormOrder._drinksDict)
+                });
+                _customerService.Write();
+            }
             FormCustomizations.addToRecipt.Clear();
             FormOrder.subtotal = 0;
             FormOrder.finalReceipt = "";
@@ -135,11 +148,15 @@ namespace CoffeePointOfSale.Forms
         {
 
         }
-        public static string Reverse(string s)
-        {
-            char[] charArray = s.ToCharArray();
-            Array.Reverse(charArray);
-            return new string(charArray);
-        }
+ 
+    }
+}
+public static class StringExtension
+{
+    public static string GetLast(this string source, int tail_length)
+    {
+        if (tail_length >= source.Length)
+            return source;
+        return source.Substring(source.Length - tail_length);
     }
 }

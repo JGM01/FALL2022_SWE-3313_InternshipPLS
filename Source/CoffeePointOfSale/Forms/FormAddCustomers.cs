@@ -144,13 +144,13 @@ public partial class FormAddCustomers : FormNoCloseBase
     private void RegisterButton_Click(object sender, EventArgs e)
     {
         useAddedCustomer = true;
-        Customer getCust = _customerService.Customers[PhoneText.Text];
+        Customer getCust = _customerService.Customers[Regex.Replace(PhoneText.Text, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3")];
         if (getCust == null)
         {
             getCust = new Customer()
             {
                 Orders = new List<Order>(),
-                Phone = PhoneText.Text,
+                Phone = Regex.Replace(PhoneText.Text, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3"),
                 Name = FirstNameText.Text +" "+ LastNameText.Text,
                 RewardPoints = 0
             };
