@@ -51,6 +51,7 @@ public partial class FormCustomerList : FormNoCloseBase
 
     private void AddCustomerBtn_Click(object sender, EventArgs e)
     {
+       
         Close(); //closes this form
         FormFactory.Get<FormAddCustomers>().Show();
     }

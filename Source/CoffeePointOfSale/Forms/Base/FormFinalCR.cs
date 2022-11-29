@@ -12,27 +12,31 @@ namespace CoffeePointOfSale.Forms.Base
     public partial class FormFinalCR : FormNoCloseBase
     {
         private readonly ICustomerService _customerService;
+        public static int spentPoints = (int) Math.Ceiling(Decimal.Parse(FormOrder.finalTotal));
         public FormFinalCR(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
         {
             _customerService = customerService;
             InitializeComponent();
 
-            foreach (Customer elem in _customerService.Customers.List)
-            {
-                if(elem.Name == FormCustomerList.customerName)
-                {
-                    labelRemainingPointsV.Text = elem.RewardPoints.ToString();
-                }
 
-            }
             
             
             richTextBox1.Text = FormOrder.finalReceipt;
             labelSubtotalV.Text = FormOrder.finalSubtotal;
             labelTaxV.Text = FormOrder.finalTax;
             labelTotalV.Text = FormOrder.finalTotal;
-            labelRewardsV.Text = "temp";
-            
+            labelRewardsV.Text = spentPoints.ToString();
+            FormCustomerList.cCustomer.RewardPoints = (FormCustomerList.cCustomer.RewardPoints - spentPoints);
+
+            foreach (Customer elem in _customerService.Customers.List)
+            {
+                if (elem.Name == FormCustomerList.customerName)
+                {
+                    labelRemainingPointsV.Text = elem.RewardPoints.ToString();
+                }
+
+            }
+
         }
 
         private void labelRemainingPoints_Click(object sender, EventArgs e)

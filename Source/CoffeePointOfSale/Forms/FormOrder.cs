@@ -22,6 +22,7 @@ namespace CoffeePointOfSale.Forms
         public static string finalTotal;
         public static int pointsEarnd;
         public static readonly List<Drinks> _drinksDict = new();
+        public static string customerName;
 
 
         public FormOrder(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
@@ -30,13 +31,18 @@ namespace CoffeePointOfSale.Forms
             Drinks _drinkMenuService = new Drinks();
 
             InitializeComponent();
-            if (!String.IsNullOrEmpty(FormCustomerList.customerName))
+            if (!FormMain.isCustomer)
             {
-                label1.Text = FormCustomerList.customerName;
-             
 
+
+
+            if (!String.IsNullOrEmpty(FormCustomerList.cCustomer.Name))
+                {
+                    label1.Text = FormCustomerList.cCustomer.Name;
+
+
+                }
             }
-
 
             foreach (Drinks elem in _drinkMenuService.initDrinks())
             {

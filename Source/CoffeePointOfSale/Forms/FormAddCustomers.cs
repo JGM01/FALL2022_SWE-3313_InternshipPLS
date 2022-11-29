@@ -3,16 +3,22 @@ using CoffeePointOfSale.Forms;
 using CoffeePointOfSale.Forms.Base;
 using CoffeePointOfSale.Services.Customer;
 using CoffeePointOfSale.Services.FormFactory;
-
+using System.Text.RegularExpressions;
 
 public partial class FormAddCustomers : FormNoCloseBase
 {
     private readonly ICustomerService _customerService;
+    public static Boolean firstName;
+    public static Boolean lastName;
+    public static Boolean Phone;
+    public static Boolean useAddedCustomer = false;
+    public static Customer cCustomer;
     public FormAddCustomers(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
     {
 
         _customerService = customerService;
         InitializeComponent();
+        RegisterButton.Enabled = false;
     }
         
     private void InitializeComponent()
@@ -137,6 +143,20 @@ public partial class FormAddCustomers : FormNoCloseBase
 
     private void RegisterButton_Click(object sender, EventArgs e)
     {
+        useAddedCustomer = true;
+        Customer getCust = _customerService.Customers[PhoneText.Text];
+        if (getCust == null)
+        {
+            getCust = new Customer()
+            {
+                Orders = new List<Order>(),
+                Phone = PhoneText.Text,
+                Name = FirstNameText.Text +" "+ LastNameText.Text,
+                RewardPoints = 0
+            };
+            _customerService.Customers.Add(getCust);
+        }
+            FormCustomerList.cCustomer = getCust;
         Close(); //closes this form
         FormFactory.Get<FormOrder>().Show(); //re-opens the main form
     }
@@ -156,17 +176,58 @@ public partial class FormAddCustomers : FormNoCloseBase
 
     private void FirstNameText_TextChanged(object sender, EventArgs e)
     {
-
+        if (FirstNameText.Text.Length == 0)
+        {
+            firstName = false;
+        }
+        else
+        {
+            firstName = true;
+            RegisterButton.Enabled = false;
+        }
     }
 
     private void LastNameText_TextChanged(object sender, EventArgs e)
     {
+        if (LastNameText.Text.Length == 0)
+        {
+            lastName = false;
+        }
+        else
+        {
+            lastName = true;
+            RegisterButton.Enabled = false;
+        }
 
     }
 
     private void PhoneText_TextChanged(object sender, EventArgs e)
     {
+       
+        if (IsPhoneNbr(PhoneText.Text))
+        {
+            Phone = true;
+        }
+        else if(!IsPhoneNbr(PhoneText.Text))
+        {
+            Phone = false;
+            RegisterButton.Enabled = false;
+        }
+        if(Phone && firstName && lastName)
+        {
+           RegisterButton.Enabled = true;
+        }
+
 
     }
+        // Regular expression used to validate a phone number.
+        public const string motif = @"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
+
+        public static bool IsPhoneNbr(string number)
+        {
+            if (number != null) return Regex.IsMatch(number, motif);
+            else return false;
+        }
+    
 }
 
