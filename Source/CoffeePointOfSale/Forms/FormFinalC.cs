@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using System.Text.Json;
 using Newtonsoft.Json;
 using System;
+using CoffeePointOfSale.Configuration;
 
 namespace CoffeePointOfSale.Forms
 {
@@ -20,6 +21,7 @@ namespace CoffeePointOfSale.Forms
         public string customerCard;
         public Customer temp;
         public string finalFour = "";
+        Rewards r = new Rewards();
 
         public FormFinalC(IAppSettings appSettings, ICustomerService customerService): base(appSettings)
         {
@@ -86,6 +88,8 @@ namespace CoffeePointOfSale.Forms
 
             if (!FormMain.isCustomer) { 
                 var getNewCust = _customerService.Customers[FormCustomerList.cCustomer.Phone];
+                getNewCust.RewardPoints += (int) FormOrder.pointsEarnd;  
+               
             getNewCust.Orders.Add(new Order()
             {
                 Date = $"{DateTime.Now.ToString()}",

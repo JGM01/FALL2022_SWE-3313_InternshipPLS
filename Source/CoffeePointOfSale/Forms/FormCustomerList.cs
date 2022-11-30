@@ -2,6 +2,8 @@
 using CoffeePointOfSale.Forms.Base;
 using CoffeePointOfSale.Services.Customer;
 using CoffeePointOfSale.Services.FormFactory;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace CoffeePointOfSale.Forms;
 
@@ -87,14 +89,21 @@ public partial class FormCustomerList : FormNoCloseBase
 
     private void SearchBtn_Click(object sender, EventArgs e)
     {
-        Customer getCust = _customerService.Customers[textBox1.Text];
+        Customer getCust = _customerService.Customers[Regex.Replace(textBox1.Text, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3")];
         if (getCust != null)
         {
-            getCust = _customerService.Customers[textBox1.Text];
-            cCustomer = getCust;
+            foreach(Customer elem in _customerService.Customers.List)
+                if(elem.Phone == Regex.Replace(textBox1.Text, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3"))
+                {
+                    cCustomer = elem;
+                    customerName = elem.Name;
+                    Close(); //closes this form
+                    FormFactory.Get<FormOrder>().Show();
+                }
+              
+            
         }
-        Close(); //closes this form
-        FormFactory.Get<FormOrder>().Show();
+       
     }
 }
 
