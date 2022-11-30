@@ -6,6 +6,7 @@ using CoffeePointOfSale.Services.DrinkMenu;
 using System.Windows.Forms;
 using System.ComponentModel.DataAnnotations;
 using CoffeePointOfSale.Services.Customer;
+using CreditCardValidator;
 
 namespace CoffeePointOfSale.Forms
 {
@@ -98,39 +99,16 @@ namespace CoffeePointOfSale.Forms
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (!checkLuhn(textBox1.Text)){
+            CreditCardDetector detector = new CreditCardDetector(textBox1.Text);
+            if (!detector.IsValid(CardIssuer.Visa) || !detector.IsValid(CardIssuer.MasterCard) || !detector.IsValid(CardIssuer.AmericanExpress)
+                || !detector.IsValid(CardIssuer.Discover))
+            {
                 cardBtn.Enabled = false;
             }
             else
             {
                 cardBtn.Enabled = true;
             }
-            static bool checkLuhn(String cardNo)
-            {
-                int nDigits = cardNo.Length;
-
-                int nSum = 0;
-                bool isSecond = false;
-                for (int i = nDigits - 1; i >= 0; i--)
-                {
-
-                    int d = cardNo[i] - '0';
-
-                    if (isSecond == true)
-                        d = d * 2;
-
-                    // We add two digits to handle
-                    // cases that make two digits
-                    // after doubling
-                    nSum += d / 10;
-                    nSum += d % 10;
-
-                    isSecond = !isSecond;
-                }
-                return (nSum % 10 == 0);
-            }
-
-
         }
     }
 }
