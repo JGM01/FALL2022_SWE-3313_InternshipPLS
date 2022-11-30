@@ -89,8 +89,7 @@ namespace CoffeePointOfSale.Forms
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             CreditCardDetector detector = new CreditCardDetector(textBox1.Text);
-            if (!detector.IsValid(CardIssuer.Visa) || !detector.IsValid(CardIssuer.MasterCard) || !detector.IsValid(CardIssuer.AmericanExpress)
-                || !detector.IsValid(CardIssuer.Discover))
+            if (!detector.IsValid())
             {
                 cardBtn.Enabled = false;
             }
