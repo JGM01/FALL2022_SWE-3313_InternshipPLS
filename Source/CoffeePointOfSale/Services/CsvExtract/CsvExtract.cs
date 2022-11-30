@@ -13,7 +13,7 @@ namespace CoffeePointOfSale.Services.CsvExtract
 {
     public class CsvExtract : ICsvExtract
     {
-        private readonly ICustomerService? _customerService;
+        private readonly ICustomerService _customerService;
 
         public CsvExtract(ICustomerService customerService) 
         {
