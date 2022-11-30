@@ -40,8 +40,19 @@ public class Drinks
         List<Drinks> temp = JsonConvert.DeserializeObject<Drinks>(jsonObj["Customers"][phone]["Orders"]);
         return temp;
     }
-    public override string ToString()
+    public string GetBasePrice()
     {
         return $"{BasePrice}";
+    }
+
+    public override string ToString()
+    {
+        var drink = $"{Name} {BasePrice:C}";
+        if (Customizations.Count > 0)
+        {
+            drink += " " + string.Join(", ", Customizations);
+        }
+
+        return drink;
     }
 }

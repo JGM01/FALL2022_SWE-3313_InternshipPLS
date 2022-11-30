@@ -21,7 +21,7 @@ namespace CoffeePointOfSale.Forms;
         
         label1.Text = _drinkMenuService.initDrinks()[FormOrder.chosenDrink].Name;
 
-        subTotal += decimal.Parse(_drinkMenuService.initDrinks()[FormOrder.chosenDrink].ToString());
+        subTotal += decimal.Parse(_drinkMenuService.initDrinks()[FormOrder.chosenDrink].GetBasePrice());
         addToRecipt.Add(label1.Text.ToUpper());
         foreach (Customization elem in _drinkMenuService.initDrinks()[FormOrder.chosenDrink].Customizations)
         {

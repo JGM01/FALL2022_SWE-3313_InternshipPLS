@@ -70,4 +70,10 @@ public class Order
     public string Card { get; set; }
     public string Drinks { get; set; }
 
+    public override string ToString()
+    {
+        //join all of the drinks together using the Drink ToString method
+        return string.Join(" | ", Drinks);
+    }
+
 }
