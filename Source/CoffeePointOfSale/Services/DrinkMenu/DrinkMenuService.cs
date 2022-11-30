@@ -11,6 +11,8 @@ public class DrinkMenuService : IDrinkMenuService
     public DrinkMenuService(IStorageService storageService)
     {
         _storageService = storageService;
+        Drinks = _storageService.Read<Drinks>();
     }
 
+    public Drinks Drinks { get; set; }
 }
