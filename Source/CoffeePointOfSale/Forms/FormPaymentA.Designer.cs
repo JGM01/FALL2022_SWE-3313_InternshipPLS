@@ -144,9 +144,11 @@
             // 
             // textBox1
             // 
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox1.Location = new System.Drawing.Point(717, 52);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(535, 27);
+            this.textBox1.PlaceholderText = "Enter Card Number";
+            this.textBox1.Size = new System.Drawing.Size(535, 41);
             this.textBox1.TabIndex = 18;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
