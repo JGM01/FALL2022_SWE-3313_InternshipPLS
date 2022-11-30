@@ -14,20 +14,24 @@ namespace CoffeePointOfSale.Forms
     {
         public static int chosenDrink;
         private readonly ICustomerService _customerService;
+    
+        private readonly IAppSettings _appSettings;
         public static decimal subtotal = 0;
         public decimal tax = .06M;
+
         public static string finalReceipt;
         public static string finalTax;
         public static string finalSubtotal;
         public static string finalTotal;
-        public static int pointsEarnd;
+        public static Decimal pointsEarnd;
         public static readonly List<Drinks> _drinksDict = new();
         public static string customerName;
-
+        public static Rewards r = new Rewards();
 
         public FormOrder(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
         {
             _customerService = customerService;
+            _appSettings = appSettings;
             Drinks _drinkMenuService = new Drinks();
 
             InitializeComponent();
@@ -73,9 +77,9 @@ namespace CoffeePointOfSale.Forms
             richTextBox1.Text = finalReceipt;
 
             labelSubtotalV.Text = subtotal.ToString("0.00");
-            labelTaxV.Text = (subtotal * tax).ToString("0.00");
-            labelTotalV.Text = ((subtotal * tax) + subtotal).ToString("0.00");
-            pointsEarnd =(int) Math.Floor((((subtotal * tax) + subtotal)/10));
+            labelTaxV.Text = (subtotal * _appSettings.Tax.Rate).ToString("0.00");
+            labelTotalV.Text = ((subtotal * _appSettings.Tax.Rate) + subtotal).ToString("0.00");
+            pointsEarnd = Math.Floor((((subtotal * _appSettings.Tax.Rate) + subtotal)*_appSettings.Rewards.PointsPerDollar));
             FormCustomizations.subTotal = 0;
         }
 
