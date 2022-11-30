@@ -98,7 +98,7 @@ namespace CoffeePointOfSale.Forms
                 Total = $"{FormOrder.finalTotal}",
                 PointsEarned = FormOrder.pointsEarnd.ToString(),
                 Card = finalFour,
-                Drinks = FormOrder._drinksDict
+                Drinks = Newtonsoft.Json.JsonConvert.SerializeObject(FormOrder._drinksDict)
             });
             _customerService.Write();
         }
@@ -113,8 +113,8 @@ namespace CoffeePointOfSale.Forms
                     Total = $"{FormOrder.finalTotal}",
                     PointsEarned = FormOrder.pointsEarnd.ToString(),
                     Card = finalFour,
-                    Drinks = FormOrder._drinksDict
-                });
+                    Drinks = Newtonsoft.Json.JsonConvert.SerializeObject(FormOrder._drinksDict)
+                }) ;
                 _customerService.Write();
             }
             FormCustomizations.addToRecipt.Clear();

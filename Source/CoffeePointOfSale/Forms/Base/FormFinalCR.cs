@@ -60,7 +60,7 @@ namespace CoffeePointOfSale.Forms.Base
                 Tax = $"{FormOrder.finalTax}",
                 Total = $"{FormOrder.finalTotal}",
                 PointsEarned = FormOrder.pointsEarnd.ToString(),
-                Drinks = FormOrder._drinksDict
+                Drinks = Newtonsoft.Json.JsonConvert.SerializeObject(FormOrder._drinksDict)
             });
             _customerService.Write();
 
