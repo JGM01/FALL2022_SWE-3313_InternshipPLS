@@ -47,7 +47,7 @@ public class Drinks
 
     public override string ToString()
     {
-        var drink = $"{Name} {BasePrice:C}";
+        var drink = "$" +this.BasePrice + " " + this.Name;
         if (Customizations.Count > 0)
         {
             drink += " " + string.Join(", ", Customizations);

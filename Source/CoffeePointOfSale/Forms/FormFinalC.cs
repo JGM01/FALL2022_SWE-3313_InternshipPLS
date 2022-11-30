@@ -98,7 +98,7 @@ namespace CoffeePointOfSale.Forms
                 Total = $"{FormOrder.finalTotal}",
                 PointsEarned = FormOrder.pointsEarnd.ToString(),
                 Card = finalFour,
-                Drinks = JsonConvert.SerializeObject(FormOrder._drinksDict)
+                Drinks = FormOrder._drinksDict
             });
             _customerService.Write();
         }
@@ -113,7 +113,7 @@ namespace CoffeePointOfSale.Forms
                     Total = $"{FormOrder.finalTotal}",
                     PointsEarned = FormOrder.pointsEarnd.ToString(),
                     Card = finalFour,
-                    Drinks = JsonConvert.SerializeObject(FormOrder._drinksDict)
+                    Drinks = FormOrder._drinksDict
                 });
                 _customerService.Write();
             }

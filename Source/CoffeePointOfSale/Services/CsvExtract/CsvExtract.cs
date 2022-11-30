@@ -9,6 +9,7 @@ using CoffeePointOfSale.Services.Customer;
 using System.Diagnostics;
 using CoffeePointOfSale.Services.Storage;
 using CoffeePointOfSale.Configuration;
+using CoffeePointOfSale.Forms;
 
 namespace CoffeePointOfSale.Services.CsvExtract
 {
@@ -29,14 +30,23 @@ namespace CoffeePointOfSale.Services.CsvExtract
             {
                 foreach (var order in customer.Orders)
                 {
+                    string temp;
+                    if (order.Card == null) 
+                    {
+                        temp = "Rewards";
+                    }
+                    else 
+                    {
+                        temp = "Card";
+                    }
                     var csvExtractLine = new CsvExtractLine
                     {
                         CustomerId = customer.Phone,
                         OrderDate = DateTime.Parse(order.Date),
-                        Subtotal = String.Format("{0:0.00}" , order.Subtotal),
+                        Subtotal = String.Format("{0:0.00}", order.Subtotal),
                         OrderTax = String.Format("{0:0.00}", order.Tax),
                         OrderTotalPrice = String.Format("{0:0.00}", order.Total),
-                        Payment = order.Card,
+                        Payment = temp,
                         OrderDetails = order.ToString(),
                     };
 

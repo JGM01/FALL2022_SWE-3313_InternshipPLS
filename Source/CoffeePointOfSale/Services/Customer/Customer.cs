@@ -68,12 +68,13 @@ public class Order
     public string Total { get; set; }
     public string PointsEarned { get; set; }
     public string Card { get; set; }
-    public string Drinks { get; set; }
+    public List<Drinks> Drinks { get; set; }
 
     public override string ToString()
     {
+        return this.Drinks.ToString();    
         //join all of the drinks together using the Drink ToString method
-        return string.Join(" | ", Drinks);
+        //return string.Join(" | ", Drinks);
     }
 
 }
