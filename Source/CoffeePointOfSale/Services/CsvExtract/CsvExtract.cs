@@ -8,6 +8,7 @@ using CsvHelper;
 using CoffeePointOfSale.Services.Customer;
 using System.Diagnostics;
 using CoffeePointOfSale.Services.Storage;
+using CoffeePointOfSale.Configuration;
 
 namespace CoffeePointOfSale.Services.CsvExtract
 {
@@ -31,11 +32,12 @@ namespace CoffeePointOfSale.Services.CsvExtract
                     var csvExtractLine = new CsvExtractLine
                     {
                         CustomerId = customer.Phone,
-                        CustomerName = customer.Name,
-                        OrderDate = order.Date,
-                        OrderId = order.Date,
-                        OrderTotalPrice = order.Total,
-                        OrderDetails = order.ToString()
+                        OrderDate = DateTime.Parse(order.Date),
+                        Subtotal = String.Format("{0:0.00}" , order.Subtotal),
+                        OrderTax = String.Format("{0:0.00}", order.Tax),
+                        OrderTotalPrice = String.Format("{0:0.00}", order.Total),
+                        Payment = order.Card,
+                        OrderDetails = order.ToString(),
                     };
 
                     csvExtractLines.Add(csvExtractLine);
@@ -73,10 +75,11 @@ namespace CoffeePointOfSale.Services.CsvExtract
     public class CsvExtractLine
     {
         public string? CustomerId { get; set; }
-        public string? CustomerName { get; set; }
-        public string? OrderId { get; set; }
-        public string? OrderDate { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public string? Subtotal { get; set; }
+        public string? OrderTax { get; set; }
         public string? OrderTotalPrice { get; set; }
+        public string? Payment { get; set; }
         public string? OrderDetails { get; set; }
     }
 }
