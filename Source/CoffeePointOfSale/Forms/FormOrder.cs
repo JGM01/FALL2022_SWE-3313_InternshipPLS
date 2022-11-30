@@ -70,7 +70,8 @@ namespace CoffeePointOfSale.Forms
 
 
             }
-            if(FormCustomizations.subTotal != null)
+            FormCustomizations.addToRecipt.Clear();
+            if (FormCustomizations.subTotal != null)
             {
                 subtotal += FormCustomizations.subTotal;
             }
